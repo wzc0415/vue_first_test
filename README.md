@@ -1,5 +1,5 @@
 # vue-first-test
-
+这是一个学习Vue2.X的项目，基于TypeScript，基于Class的Component装饰器写法，集成VueX,Vue-Router
 ## Project setup
 ```
 npm install
