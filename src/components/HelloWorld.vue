@@ -108,12 +108,13 @@
                 >
             </li>
         </ul>
-        <button @click="onClick()">这是个按钮</button>
+        <button v-on:click="onClick">这是个按钮</button>
     </div>
 </template>
 
 <script lang="ts">
     import {Component, Prop, Vue, Watch} from "vue-property-decorator";
+    import axios from 'axios';
 
     @Component
     export default class HelloWorld extends Vue {
@@ -140,6 +141,13 @@
 
         mounted() {
             console.log('mounted',JSON.stringify(this.msg));
+            axios.get('http://localhost:8000/asd').then(res=>{
+                console.log(res)
+            }).catch(err=>{
+                console.error(err);
+            }).finally(()=>{
+                console.log('finally');
+            })
         }
 
         beforeUpdate() {
