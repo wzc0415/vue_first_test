@@ -1,32 +1,47 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <el-menu
+      :default-active="activeIndex"
+      class="el-menu-demo"
+      mode="horizontal"
+      @select="handleSelect" :router="true">
+      <el-menu-item index="/">个人主页</el-menu-item>
+      <el-menu-item index="about">关于</el-menu-item>
+      <el-menu-item index="login">Login</el-menu-item>
+    </el-menu>
+    <div class="line"></div>
     <router-view />
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import { Menu, MenuItem } from "element-ui";
+import { Vue } from "vue-property-decorator";
+Vue.component(Menu.name, Menu);
+Vue.component(MenuItem.name, MenuItem);
+export default {
+  name: "app",
+  data() {
+    return {
+      activeIndex: "1"
+    };
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+    }
+  }
+};
+</script>
+
+<style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  margin-top: 60px;
 }
 </style>

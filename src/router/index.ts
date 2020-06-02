@@ -1,6 +1,8 @@
 import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
+import VueRouter, { RawLocation, RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
+import LoginComponent from "@/components/Login.vue";
+import {Route} from "vue-router/types/router";
 
 Vue.use(VueRouter);
 
@@ -18,13 +20,21 @@ const routes: Array<RouteConfig> = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: LoginComponent
   }
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: "hash",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
-
+// const originalPush = VueRouter.prototype.push;
+// VueRouter.prototype.push = function push(location: RawLocation):Promise<Route> {
+//   return originalPush.catch((err: any) => err);
+// };
 export default router;
