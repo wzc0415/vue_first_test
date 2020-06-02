@@ -17,12 +17,6 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Button, Form, FormItem, Input } from "element-ui";
-
-Vue.component(Input.name, Input);
-Vue.component(Form.name, Form);
-Vue.component(FormItem.name, FormItem);
-Vue.component(Button.name, Button);
 @Component
 export default class LoginComponent extends Vue {
   form = {

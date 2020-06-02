@@ -1,24 +1,27 @@
 <template>
   <div id="app">
-    <el-menu
-      :default-active="activeIndex"
-      class="el-menu-demo"
-      mode="horizontal"
-      @select="handleSelect" :router="true">
-      <el-menu-item index="/">个人主页</el-menu-item>
-      <el-menu-item index="about">关于</el-menu-item>
-      <el-menu-item index="login">Login</el-menu-item>
-    </el-menu>
-    <div class="line"></div>
-    <router-view />
+    <el-container>
+      <el-header>
+        <el-menu
+          :default-active="activeIndex"
+          class="el-menu-demo"
+          mode="horizontal"
+          @select="handleSelect"
+          :router="true">
+          <el-menu-item index="/">个人主页</el-menu-item>
+          <el-menu-item index="about">关于</el-menu-item>
+          <el-menu-item index="login">Login</el-menu-item>
+        </el-menu>
+      </el-header>
+      <el-main>
+        <router-view />
+      </el-main>
+      <el-footer></el-footer>
+    </el-container>
   </div>
 </template>
 
 <script>
-import { Menu, MenuItem } from "element-ui";
-import { Vue } from "vue-property-decorator";
-Vue.component(Menu.name, Menu);
-Vue.component(MenuItem.name, MenuItem);
 export default {
   name: "app",
   data() {
@@ -42,6 +45,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
